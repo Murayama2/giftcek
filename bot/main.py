@@ -3,7 +3,7 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 from handlers.user_handler import user_router
-from handlers.gift_handler import gift_router
+from handlers.gift_handler import gift_monitor
 from handlers.user_handler import register_user_handlers
 from utils.gift_utils import gift_monitor
 
@@ -16,7 +16,7 @@ bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 async def main():
-    dp.include_router(gift_router)
+    dp.include_router(gift_monitor)
     dp.include_router(user_router)
 
 # Register user input handler
