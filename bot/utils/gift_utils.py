@@ -1,9 +1,11 @@
 import aiohttp
 from aiogram import Bot
+import asyncio
 
 TONNEL_API_URL = "https://gifts3.tonnel.network/api/pageGifts"
 
-# Ambil data gift terbaru dari API Tonnel
+sent_gifts = set()
+
 async def fetch_gifts():
     try:
         async with aiohttp.ClientSession() as session:
@@ -17,7 +19,7 @@ async def fetch_gifts():
         print(f"Error while fetching gifts: {e}")
     return []
 
-# Kirim alert tentang gift ke chat
+
 async def send_gift_alert(bot: Bot, chat_id, gift):
     title = gift.get("title", "New Gift")
     url = gift.get("url", "https://tonnel.io")
@@ -40,3 +42,14 @@ async def send_gift_alert(bot: Bot, chat_id, gift):
             await bot.send_message(chat_id, text=caption, parse_mode="HTML")
     except Exception as e:
         print(f"Failed to send message: {e}")
+
+async def gift_monitor(bot: Bot, chat_id):
+    while True:
+        gifts = await fetch_gifts()
+        for gift in gifts:
+            slug = gift.get("slug")
+            if slug and slug not in sent_gifts:
+                print(f"🔔 Gift baru ditemukan: {slug}")
+                await send_gift_alert(bot, chat_id, gift)
+                sent_gifts.add(slug)
+        await asyncio.sleep(5)
