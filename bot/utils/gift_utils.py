@@ -1,4 +1,5 @@
 import aiohttp
+import json
 from aiogram import Bot
 import asyncio
 
@@ -15,7 +16,7 @@ async def fetch_gifts():
     }
 
     params = {
-        "filter": "{}",
+        "filter": json.dump"{}",
         "page": 1,
         "limit": 50
     }
