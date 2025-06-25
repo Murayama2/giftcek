@@ -23,6 +23,10 @@ async def fetch_gifts():
 
     try:
         async with aiohttp.ClientSession(headers=headers) as session:
+
+            print("Fetching gifts with params:", params)
+            print("Final URL:", str(session.get(TONNEL_API_URL, params=params).url))
+
             async with session.get(TONNEL_API_URL) as response:
                 if response.status == 200:
                     data = await response.json()
