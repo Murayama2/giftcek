@@ -24,4 +24,4 @@ async def send_gift_alert(bot, chat_id, gift):
         else:
             await bot.send_message(chat_id, caption, reply_markup=buttons, parse_mode="HTML")
     except Exception as e:
-        print(f"Failed to send message: {e}"
+        print(f"Failed to send message: {e}")
