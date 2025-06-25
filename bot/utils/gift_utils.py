@@ -7,14 +7,25 @@ TONNEL_API_URL = "https://gifts3.tonnel.network/api/pageGifts"
 sent_gifts = set()
 
 async def fetch_gifts():
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://market.tonnel.network",
+        "Origin": "https://market.tonnel.network",
+    }
+
     try:
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(headers=headers) as session:
             async with session.get(TONNEL_API_URL) as response:
                 if response.status == 200:
                     data = await response.json()
                     return data.get("data", [])
                 else:
                     print(f"Failed to fetch gifts. Status code: {response.status}")
+                    try:
+                        print("Response text:", await response.text())
+                    except:
+                        pass
     except Exception as e:
         print(f"Error while fetching gifts: {e}")
     return []
