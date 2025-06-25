@@ -1,19 +1,29 @@
-import asyncio
-import logging
 import os
-from aiogram import Bot
+import asyncio
+from aiogram import Bot, Dispatcher
+from dotenv import load_dotenv
+from handlers.user_input_handler import register_user_handlers
+from utils.gift_utils import gift_monitor
 
-from handlers.gift_handler import gift_monitor
-
-logging.basicConfig(level=logging.INFO)
+load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+CHAT_ID = os.getenv("CHAT_ID")  # channel ID or user ID
 
 bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
+
+# Register user input handler
+register_user_handlers(dp)
 
 async def main():
-    await gift_monitor(bot, CHAT_ID)
+    print("Bot started...")
+
+    # Run gift monitoring in background
+    asyncio.create_task(gift_monitor(bot, CHAT_ID))
+
+    # Start polling user messages
+    await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())
