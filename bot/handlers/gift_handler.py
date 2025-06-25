@@ -26,4 +26,4 @@ async def gift_monitor(bot, chat_id):
                     await send_gift_alert(bot, chat_id, gift)
         except Exception as e:
             print(f"Error in gift monitor: {e}")
-        await asyncio.sleep(30)
+        await asyncio.sleep(15)
