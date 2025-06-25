@@ -1,6 +1,6 @@
 import asyncio
 import aiohttp
-from bot.utils.gift_utils import send_gift_alert
+from utils.gift_utils import send_gift_alert
 
 TONNEL_API_URL = "https://gifts3.tonnel.network/api/pageGifts"
 
