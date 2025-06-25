@@ -3,7 +3,7 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 from handlers.user_handler import user_router
-from handlers.user_handler import gift_router
+from handlers.gift_handler import gift_router
 from handlers.user_handler import register_user_handlers
 from utils.gift_utils import gift_monitor
 
