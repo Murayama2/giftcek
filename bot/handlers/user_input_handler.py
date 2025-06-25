@@ -13,4 +13,4 @@ async def handle_nft_link(message: types.Message):
         await message.answer("❌ Please send a valid NFT link like https://t.me/nft/JesterHat-1234")
 
 def register_user_handlers(dp: Dispatcher):
-    dp.message.register(handle_nft_link)￼Enter
+    dp.message.register(handle_nft_link)
