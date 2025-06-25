@@ -24,3 +24,7 @@ async def handle_nft_link(message: Message):
             return
 
     await message.reply("❌ Gift not found or no longer available.")
+
+# Tambahkan ini supaya main.py bisa import
+def register_user_handlers(dp):
+    dp.include_router(user_router)
