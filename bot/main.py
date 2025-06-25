@@ -3,7 +3,7 @@ import logging
 import os
 from aiogram import Bot
 
-from bot.handlers.gift_handler import gift_monitor
+from handlers.gift_handler import gift_monitor
 
 logging.basicConfig(level=logging.INFO)
 
