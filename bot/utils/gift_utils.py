@@ -14,6 +14,12 @@ async def fetch_gifts():
         "Origin": "https://market.tonnel.network",
     }
 
+    params = {
+        "filter": "{}",
+        "page": 1,
+        "limit": 50
+    }
+
     try:
         async with aiohttp.ClientSession(headers=headers) as session:
             async with session.get(TONNEL_API_URL) as response:
