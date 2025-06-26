@@ -19,7 +19,7 @@ async def fetch_gifts():
     params = {
         "filter": json.dumps({}),
         "page": 1,
-        "limit": 50
+        "limit": 10
     }
 
     try:
