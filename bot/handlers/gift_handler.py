@@ -2,7 +2,7 @@ import asyncio
 import aiohttp
 from utils.gift_utils import send_gift_alert
 
-TONNEL_API_URL = "https://gifts3.tonnel.network/api/pageGifts"
+TONNEL_API_URL = "https://gifts3.tonnel.network/api/pageGifts?limit=10"
 
 seen_gift_ids = set()
 
