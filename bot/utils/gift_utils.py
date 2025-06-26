@@ -46,7 +46,7 @@ async def fetch_gifts():
 # Kirim notifikasi gift ke Telegram
 async def send_gift_alert(bot: Bot, chat_id, gift):
     title = gift.get("title", "New Gift")
-    url = gift.get("url", "https://tonnel.io")
+    url = gift.get("url", "https://market.tonnel.network/")
     image = gift.get("image")
     price = gift.get("price", 0)
     limit = gift.get("limit", "?")
