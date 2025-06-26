@@ -3,7 +3,7 @@ import json
 from aiogram import Bot
 import asyncio
 
-TONNEL_API_URL = "https://gifts3.tonnel.network/api/pageGifts"
+TONNEL_API_URL = "https://gifts3.tonnel.network/api/pageGifts?limit=10"
 
 sent_gifts = set()
 
